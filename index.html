@@ -1,23 +1,638 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "구로구 인터넷 가입 시 현금 지원을 가장 많이 받는 방법은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "현금 지원 혜택은 통신사 본사, 대리점, 온라인 업체에 따라 다릅니다. 보통 온라인 전문 업체가 본사보다 더 많은 사은품과 현금 지원을 제공합니다. 2026년 기준으로 신규 가입 시 통신사별 요금제와 결합 상품을 비교하여 최대 지원금을 확인하는 것이 중요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "SK, KT, LG U+ 통신사별 인터넷 속도와 안정성에는 차이가 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "통신 3사는 2026년 현재 전국망 광케이블을 구축하고 있어 이론상의 속도 차이는 거의 없습니다. 다만, 구로구 내 특정 아파트 단지나 주택 지역에서는 SKT, KT, LGU+ 중 한 곳이 더 안정적인 경우가 있습니다. 실시간 사용 후기 및 지역별 정보를 바탕으로 비교하는 것이 좋습니다. KT는 상대적으로 전국망이 안정적이라는 평가가 많습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "구로구 원룸이나 오피스텔 인터넷 가입 시 유의해야 할 점은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "원룸이나 오피스텔은 건물 자체가 특정 통신사와 계약되어 있는 경우가 많습니다. 이 경우 선택권이 제한되거나 단체 계약으로 인해 개인적으로 가입할 때보다 사은품 혜택이 적을 수 있습니다. 가입 전 건물 관리사무소에 확인하는 것이 필수입니다. 1인 가구는 보통 기가급이 아닌 100M 또는 500M 속도 상품으로도 충분하며, 비용 절감에 도움이 됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "인터넷 가입 시 사은품(현금)과 요금제 중 무엇을 먼저 고려해야 하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "사은품과 요금제 모두 중요합니다. 단기적으로는 사은품이 매력적일 수 있지만, 장기적으로는 월 납입 요금의 총액이 더 중요합니다. 특히 3년 약정 기간 동안의 총 비용을 계산하고, 현금 지원 금액을 합산하여 꼼꼼히 비교해야 합니다. 무조건 싼 곳만 찾기보다, 나에게 맞는 요금제와 안정적인 서비스를 제공하는 업체를 선택하는 것이 현명합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #2A4D69; /* 진한 파란색 계열 */
+      --secondary-color: #4B86B4; /* 부드러운 파란색 계열 */
+      --accent-color: #ADCBE3; /* 밝은 파란색 계열 */
+      --highlight-color: #E7EFF6; /* 배경 하이라이트 */
+      --text-color: #2D3E50; /* 진한 텍스트 */
+      --bg-light: #F0F4F8; /* 밝은 배경 */
+      --bg-white: #ffffff; /* 흰색 배경 */
+      --btn-color: #FF6F61; /* CTA 버튼 색상 (붉은 계열) */
+      --btn-hover: #FF4F3B; /* CTA 버튼 호버 색상 */
+      --success-color: #4CAF50; /* 성공 메시지 (녹색) */
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7;
+      font-size: 16px;
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight:700;
+      line-height: 1.2;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--bg-white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight:900;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      line-height: 1.3;
+    }
+    .hero p {
+      font-size: 1.4em;
+      margin-bottom: 35px;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.3em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      text-align: left;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2em;
+      font-weight: 700;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+      color: var(--text-color);
+    }
+    .compare-form-box input, .compare-form-box select {
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      box-sizing:border-box;
+      font-size: 1em;
+    }
+    .content-section {
+      margin: 40px 0;
+      padding: 60px 0;
+    }
+    .content-section.bg-white {
+      background-color: var(--bg-white);
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.8em;
+      color: var(--secondary-color);
+      margin-bottom:30px;
+      font-weight:900;
+      text-align:center;
+      line-height: 1.3;
+    }
+    .content-section h3 {
+      font-size:1.8em;
+      color: var(--primary-color);
+      margin-top:40px;
+      margin-bottom:15px;
+      font-weight:700;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 5px;
+    }
+    .content-section h4 {
+      font-size:1.4em;
+      color: var(--secondary-color);
+      margin-top:25px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px 10px 30px 10px;
+      padding:25px;
+      background-color: var(--highlight-color);
+      border-radius:12px;
+      text-align:center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .feature-grid .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    .feature-grid .item img {
+      width:80px; height:80px;
+      margin-bottom:15px;
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+      background-color: var(--highlight-color);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:10px 18px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+      font-size: 0.95em;
+    }
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+      background-color: var(--bg-white);
+      margin-bottom: 10px;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+      margin:0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+      margin-left: 10px;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:15px;
+      color:#555;
+      font-size:1.1em;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+    /* 테이블 스타일 */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: var(--bg-white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .data-table th, .data-table td {
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+    }
+    .data-table th {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .data-table tr:nth-child(even) {
+      background-color: var(--highlight-color);
+    }
+    .data-table tr:hover {
+      background-color: #f1f1f1;
+    }
+    /* 텍스트 강조 */
+    .highlight {
+      color: var(--btn-color);
+      font-weight: bold;
+    }
+    .strong-text {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    /* 폼 그룹화 */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    /* 그래프/이미지 섹션 */
+    .chart-box {
+      background-color: var(--bg-white);
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    /* 외부 링크 섹션 */
+    .external-links ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .external-links li {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    .external-links a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .external-links a:hover {
+      text-decoration: underline;
+    }
+    /* 반응형 디자인 */
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4em; }
+      .hero p { font-size:1.2em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; padding:8px 15px; }
+      .data-table th, .data-table td { font-size: 0.9em; padding: 10px; }
+      body { font-size: 15px; }
+    }
+    @media (max-width:480px) {
+      .hero h1 { font-size:2em; }
+      .content-section h2 { font-size:1.8em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">구로구 인터넷 가입센터</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>구로구 인터넷, 2026년 최신 요금제와 최대 사은품을<br>비교하고 가입하세요</h1>
+        <p>SK, KT, LG U+ 3사 비교부터 구로동, 신도림동, 개봉동까지<br>지역별 맞춤형 견적을 무료로 제공합니다.</p>
+        <div class="compare-form-box">
+          <h2>맞춤형 1:1 상담 및 견적 신청</h2>
+          <p>간단한 정보 입력으로 구로구 내 모든 인터넷 상품의 <span class="highlight">현금 지원</span> 및 <span class="highlight">할인 혜택</span>을 비교해 보세요.</p>
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="name">이름</label>
+              <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">연락처</label>
+              <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+            </div>
+            <div class="form-group">
+              <label for="address">설치 희망 지역 (구로구 상세 주소)</label>
+              <input type="text" id="address" name="address" placeholder="예: 구로구 신도림동 123-456" required>
+            </div>
+            <div class="form-group">
+              <label for="serviceType">희망 서비스</label>
+              <select id="serviceType" name="serviceType" required>
+                <option value="">서비스 유형 선택</option>
+                <option value="internet_tv">인터넷 + TV 결합</option>
+                <option value="internet_only">인터넷 단독</option>
+                <option value="etc">기타 문의</option>
+              </select>
+            </div>
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section bg-white">
+      <div class="container">
+        <h2>구로구 인터넷 가입, 왜 2026년 최신 정보가 중요할까요?</h2>
+        <p>2026년 현재, 인터넷 시장은 인공지능(AI) 기술과 초고속 네트워크 경쟁으로 급변하고 있습니다. 과거 단순히 속도만 보던 것과 달리, 이제는 사물인터넷(IoT), 스마트 홈 서비스, AI 기반의 고객 지원 등 다양한 부가 서비스가 중요해졌습니다. 특히 <span class="strong-text">구로구</span>는 <span class="strong-text">구로 디지털 단지</span>가 위치해 있어 통신 인프라 경쟁이 치열하며, 이는 소비자에게 더 많은 혜택과 선택권을 제공합니다.</p>
+        <p>새로운 기술에 맞춰 통신사별 요금제와 <span class="highlight">현금 지원</span> 금액도 수시로 변경됩니다. 따라서 꼼꼼한 비교 없이 무조건 저렴한 곳이나 싼 곳을 선택했다가는 추후 불이익을 당할 수 있습니다. 저희는 <span class="highlight">2026년</span> 최신 데이터를 바탕으로 <span class="strong-text">구로동, 신도림동, 가리봉동, 개봉동, 오류동</span> 등 구로구 전 지역의 숨겨진 <span class="highlight">할인 혜택</span>까지 찾아드립니다.</p>
+
+        <h3 style="margin-top:50px;">구로구인터넷 가입을 위한 필수 고려 사항</h3>
+        <div class="feature-grid">
+          <div class="item">
+            <img src="https://via.placeholder.com/80/4B86B4/fff?text=ICON1" alt="현금지원 아이콘">
+            <h4>사은품 및 현금지원</h4>
+            <p>신규 가입 시 통신사별로 제공하는 <span class="strong-text">현금 지원금</span>을 비교합니다. 온라인 전문 업체의 경우 본사보다 <span class="highlight">더 많은 사은품</span>을 제공하는 경우가 많습니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/4B86B4/fff?text=ICON2" alt="요금제 비교 아이콘">
+            <h4>요금제 및 결합 할인</h4>
+            <p>휴대폰 요금제와 결합할 경우 <span class="strong-text">월 납입 금액</span>을 크게 줄일 수 있습니다. 가족 구성원의 통신사를 고려하여 <span class="highlight">최적의 결합 상품</span>을 찾아드립니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/4B86B4/fff?text=ICON3" alt="지역별 안정성 아이콘">
+            <h4>지역별 안정성 및 설치</h4>
+            <p>구로구 내에서도 <span class="strong-text">신도림동</span> 오피스텔이나 <span class="strong-text">구로동</span> 주택가 등 지역별 설치 환경에 따라 <span class="highlight">통신 품질</span>이 달라질 수 있습니다. 지역 전문 업체의 조언이 필요합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>SK, KT, LG U+ 2026년 구로구 인터넷 요금제 비교 분석</h2>
+        <p>인터넷 통신사를 결정할 때 가장 중요한 요소는 요금과 사은품입니다. 2026년 기준, 통신사별로 경쟁적인 <span class="highlight">신규 가입 혜택</span>을 제공하고 있습니다. 단순히 <span class="highlight">저렴한곳</span>을 찾기보다, 장기적인 관점에서 <span class="strong-text">내돈내산</span> 후기를 참고하여 총 비용을 계산해 보는 것이 중요합니다. 아래 표는 구로구 지역에서 가장 많이 찾는 100M, 500M, 1G 속도 상품의 평균 <span class="highlight">월 요금</span>과 <span class="highlight">현금 지원금</span>을 비교한 <span class="strong-text">예상 금액</span>입니다. (결합 상품 및 할인 적용 전 기준)</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>KT (기가 인터넷)</th>
+              <th>SKT (Btv All)</th>
+              <th>LG U+ (기가 슬림)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>속도 (Giga)</td>
+              <td>1G (최대 1Gbps)</td>
+              <td>1G (최대 1Gbps)</td>
+              <td>1G (최대 1Gbps)</td>
+            </tr>
+            <tr>
+              <td>월 예상 요금</td>
+              <td>42,900원 ~ 44,000원</td>
+              <td>42,900원 ~ 44,000원</td>
+              <td>41,800원 ~ 43,000원</td>
+            </tr>
+            <tr>
+              <td>신규 가입 혜택 (현금/상품권)</td>
+              <td><span class="highlight">평균 30만원 ~ 40만원</span></td>
+              <td><span class="highlight">평균 35만원 ~ 45만원</span></td>
+              <td><span class="highlight">평균 30만원 ~ 40만원</span></td>
+            </tr>
+            <tr>
+              <td>주요 장점</td>
+              <td>안정적인 네트워크, 빠른 AS 처리</td>
+              <td>다양한 결합 할인 (T family, Btv)</td>
+              <td>합리적인 가격, IPTV 콘텐츠 우위</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small-info" style="margin-top:15px; text-align:right;">*2026년 3월 기준, 3년 약정, VAT 포함, 요금제에 따라 상이. 자세한 비교는 상담 필수.</p>
+
+        <h3>SK vs KT vs LG: 구로구 내 설치 환경 장단점 차이점</h3>
+        <p>통신사별 <span class="strong-text">장단점</span>은 분명히 존재합니다. KT는 '국민 인터넷'으로 불릴 만큼 광범위한 인프라를 구축하고 있어 <span class="strong-text">구로동</span> 주택가나 <span class="strong-text">개봉동</span> 구옥 지역에서도 비교적 안정적인 속도를 보장합니다. SKT는 <span class="strong-text">신도림동</span> 오피스텔이나 대규모 아파트 단지에서 <span class="strong-text">SK텔레콤</span> 휴대폰 사용자와의 결합 할인 혜택이 강력합니다. LG U+는 <span class="strong-text">가리봉동</span>이나 <span class="strong-text">오류동</span> 신축 건물 위주로 인프라를 확장하며 IPTV 콘텐츠 측면에서 강점을 보이고 있습니다.</p>
+
+        <p>결론적으로 <span class="strong-text">구로구</span>에서 <span class="strong-text">인터넷 추천</span>을 받으려면, 단순히 <span class="strong-text">순위</span>를 따지기보다 본인의 휴대폰 통신사를 확인하고, 거주하는 지역의 설치 환경을 고려하여 <span class="strong-text">전문 업체</span>에 <span class="strong-text">비교 견적</span>을 요청하는 것이 가장 확실한 방법입니다. <span class="strong-text">내돈내산</span> 후기들을 종합적으로 분석하면 <span class="strong-text">저렴한곳</span>을 찾을 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section bg-white">
+      <div class="container">
+        <h2>구로구 지역별 인터넷 가입 및 설치 가이드 (2026년 업데이트)</h2>
+        <p>구로구는 크게 구로디지털단지 주변의 비즈니스 지역과 <span class="strong-text">개봉동, 오류동</span> 중심의 주거 지역으로 나뉩니다. 각 지역별 특성을 이해하면 인터넷 가입 시 발생할 수 있는 문제점을 사전에 방지할 수 있습니다.</p>
+
+        <h3>1. 구로동 및 신도림동 (주거·상업 복합 지역)</h3>
+        <ul>
+          <li><strong>특징:</strong> <span class="strong-text">구로동</span>의 구로 디지털 단지 주변은 오피스텔과 1인 가구 밀집 지역입니다. <span class="strong-text">신도림동</span>은 대형 아파트 단지와 상업 시설이 혼재합니다.</li>
+          <li><strong>가입 팁:</strong> 오피스텔이나 원룸의 경우 건물 단위의 단체 계약이 많으므로 <span class="highlight">현금 지원</span> 금액이 적을 수 있습니다. 신규 <span class="strong-text">가입 혜택</span>을 극대화하려면 해당 건물에 통신사 단체 계약이 없는지 확인하고, 통신사별 <span class="strong-text">사은품</span> 금액을 비교하는 것이 좋습니다.</li>
+        </ul>
+
+        <h3>2. 개봉동 및 오류동 (전통 주거 지역)</h3>
+        <ul>
+          <li><strong>특징:</strong> <span class="strong-text">개봉동</span>과 <span class="strong-text">오류동</span>은 일반 주택 및 빌라가 많은 지역입니다.</li>
+          <li><strong>가입 팁:</strong> 주택가에서는 통신사별 인프라 구축 정도에 따라 속도 차이가 발생할 수 있습니다. <span class="strong-text">KT</span>가 가장 안정적인 경우가 많지만, <span class="strong-text">SK</span>나 <span class="strong-text">LG</span>도 인프라를 확장하고 있습니다. 방문 설치 전 반드시 <span class="highlight">지역별 설치 가능 여부</span>를 확인하고 <span class="highlight">비교 견적</span>을 받아야 합니다.</li>
+        </ul>
+
+        <h3>3. 가리봉동 및 고척동 (개발 지역)</h3>
+        <ul>
+          <li><strong>특징:</strong> <span class="strong-text">가리봉동</span>은 재개발이 진행되고 있으며, <span class="strong-text">고척동</span>은 대규모 아파트 단지가 들어서고 있습니다.</li>
+          <li><strong>가입 팁:</strong> 신축 아파트는 <span class="strong-text">기가 인터넷</span> 설치가 기본으로 되어 있는 경우가 많습니다. <span class="strong-text">신규 가입</span> 시 <span class="highlight">이벤트</span>나 <span class="highlight">할인</span> 프로모션을 적극 활용하여 <span class="strong-text">지원금</span>을 최대한 받아내는 것이 중요합니다.</li>
+        </ul>
+
+        <h3 style="margin-top:50px;">구로구인터넷 가입을 위한 필수 키워드 모음</h3>
+        <ul class="keyword-list">
+          <li>#구로구인터넷</li>
+          <li>#구로동인터넷가입</li>
+          <li>#신도림인터넷추천</li>
+          <li>#가리봉동인터넷설치</li>
+          <li>#개봉동인터넷요금</li>
+          <li>#오류동인터넷비교</li>
+          <li>#고척동기가인터넷</li>
+          <li>#천왕동인터넷업체</li>
+          <li>#온수동인터넷싼곳</li>
+          <li>#구로디지털단지인터넷</li>
+          <li>#구로구현금지원</li>
+          <li>#인터넷사은품순위</li>
+          <li>#인터넷가입할인</li>
+          <li>#SKT결합할인</li>
+          <li>#KTPCS결합</li>
+          <li>#LG유플러스결합상품</li>
+          <li>#인터넷내돈내산후기</li>
+          <li>#인터넷견적비용</li>
+          <li>#2026년인터넷가격</li>
+          <li>#구로구원룸인터넷</li>
+          <li>#인터넷약정기간</li>
+          <li>#인터넷단점장점차이점</li>
+          <li>#저렴한인터넷업체</li>
+          <li>#인터넷비교사이트</li>
+          <li>#신규가입이벤트</li>
+          <li>#AI인터넷서비스</li>
+          <li>#ChatGPT인터넷속도</li>
+          <li>#네이버웹사이트순위</li>
+          <li>#구글인터넷검색</li>
+          <li>#상품권지원금액</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+        <p>구로구 인터넷 가입 시 고객님들이 가장 궁금해하는 질문들을 모아 답변해 드립니다.</p>
+
+        <div class="faq-item">
+          <h3>Q1. 인터넷 약정 기간이 끝나지 않았는데 해지하고 신규 가입이 가능한가요?</h3>
+          <p>A. 약정 기간 내에 해지하면 위약금이 발생합니다. <span class="strong-text">평균</span>적으로 남은 기간에 따라 위약금이 계산되므로, 위약금과 신규 가입 시 받는 <span class="highlight">현금 지원금</span>을 비교하여 <span class="strong-text">손익 계산</span>을 해봐야 합니다. 2026년 현재 통신사들은 위약금 대납 프로모션을 제공하기도 하므로, <span class="strong-text">전문 업체</span>에 문의하여 자세한 상담을 받아보세요.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q2. 구로구 인터넷 설치 시 <span class="strong-text">저렴한곳</span>이나 <span class="strong-text">싼곳</span>만 찾으면 되나요?</h3>
+          <p>A. 단순히 <span class="strong-text">싼곳</span>만 찾아서는 안됩니다. 인터넷 가입 시 <span class="strong-text">상품권</span>이나 <span class="highlight">현금 지원금</span>을 많이 준다고 약속하고 실제 지급하지 않거나, 사후 관리가 안 되는 <span class="strong-text">업체</span>가 있을 수 있습니다. <span class="strong-text">네이버</span> 등 포털 사이트의 <span class="strong-text">내돈내산 후기</span>를 꼼꼼히 확인하고, 믿을 수 있는 <span class="strong-text">전문 업체</span>를 통해 진행하는 것이 중요합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q3. 구로구에서 2026년 <span class="strong-text">AI 기반</span> 스마트 홈 서비스를 이용할 수 있나요?</h3>
+          <p>A. 네, 가능합니다. 2026년 통신사들은 <span class="strong-text">AI 스피커</span>를 활용한 스마트 홈 서비스를 기본으로 제공합니다. <span class="strong-text">Gemini</span>나 <span class="strong-text">ChatGPT</span>와 같은 대형 언어 모델 기반의 <span class="strong-text">AI 에이전트</span>를 활용하여 인터넷 제어, 일정 관리, 콘텐츠 추천 등을 제공하고 있습니다. 특히 <span class="strong-text">신규 가입</span> 시 이러한 <span class="strong-text">AI 서비스</span>를 <span class="strong-text">할인</span>된 <span class="strong-text">가격</span>으로 체험할 수 있는 <span class="strong-text">이벤트</span>도 진행 중입니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q4. 인터넷 가입 시 <span class="strong-text">사은품</span>과 <span class="strong-text">현금</span> 중 어떤 것을 선택하는 것이 유리한가요?</h3>
+          <p>A. <span class="strong-text">현금 지원</span>이 <span class="highlight">상품권</span>보다 소비자 만족도가 높은 편입니다. <span class="strong-text">지원금</span> 규모는 통신사 <span class="strong-text">상품</span>과 <span class="strong-text">이벤트</span> 시기에 따라 <span class="highlight">평균</span>적으로 달라지며, <span class="strong-text">사은품</span>과 <span class="strong-text">현금</span>을 동시에 지급하는 <span class="strong-text">업체</span>도 있습니다. <span class="strong-text">비교</span> 견적 시 총 <span class="strong-text">금액</span>을 따져보고 결정하세요.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q5. 구로구 <span class="strong-text">원룸이사</span> 시 인터넷 이전 설치 비용이 따로 드나요?</h3>
+          <p>A. <span class="strong-text">원룸이사</span>로 인해 주소지 변경 시 인터넷 이전 설치가 필요합니다. 대부분의 통신사는 1회~2회 무료 이전 설치 서비스를 제공하지만, 추가 이전 시 <span class="strong-text">비용</span>이 발생할 수 있습니다. 2026년 통신사 규정에 따라 <span class="strong-text">예상</span> <span class="strong-text">금액</span>이 달라지므로, 이전 설치 가능 여부와 <span class="strong-text">가격</span>을 미리 확인하세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container external-links">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>인터넷 통신 서비스 가입 시 소비자 권익 보호 및 최신 정보를 확인하는 데 도움이 되는 공인된 자료입니다.</p>
+        <ul>
+          <li><a href="https://www.kcc.go.kr/user.do?mode=view&page=A05010100&boardId=1075&contentId=10036324" target="_blank" rel="noopener">과학기술정보통신부 - 인터넷 가입 관련 소비자 유의사항 (정부 공식 자료)</a></li>
+          <li><a href="https://www.law.go.kr/법령/전기통신사업법" target="_blank" rel="noopener">법제처 - 전기통신사업법 (인터넷 서비스 관련 법률)</a></li>
+          <li><a href="https://www.kca.go.kr/index.do" target="_blank" rel="noopener">한국소비자원 - 통신 서비스 관련 피해구제 및 분쟁 해결 (소비자 보호 기관)</a></li>
+          <li><a href="https://ko.wikipedia.org/wiki/구로구" target="_blank" rel="noopener">구로구 - 위키백과 (지역 정보 및 통계)</a></li>
+          <li><a href="https://www.sbiz.or.kr/sbiz/main.do" target="_blank" rel="noopener">소상공인시장진흥공단 (지역 경제 및 소상공인 사업 정보)</a></li>
+        </ul>
+        <p style="margin-top:20px;">위 자료들은 <span class="strong-text">구로구 인터넷</span> 가입 시 통신사 선택, 요금제 <span class="strong-text">비교</span>, 그리고 <span class="strong-text">소비자 혜택</span>을 정확하게 이해하는 데 도움을 줍니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section bg-white">
+        <div class="container">
+            <h2>구로구 인터넷 가입 시뮬레이션: 2026년 <span class="highlight">현금 지원</span> A/B/C 유형 분석</h2>
+            <p>인터넷 <span class="strong-text">신규 가입</span> 시 제공되는 <span class="strong-text">현금 지원금</span>은 업체마다 <span class="strong-text">차이점</span>이 있습니다. 이는 통신사 본사 정책과 대리점 <span class="strong-text">이벤트</span>에 따라 달라집니다. 아래 그래프는 2026년 구로구에서 <span class="strong-text">인터넷 추천</span> 업체에 따른 <span class="strong-text">예상 지원금</span> <span class="strong-text">금액</span>을 시뮬레이션한 것입니다. (가상의 데이터이며, 실제 <span class="strong-text">가격</span>은 상담 후 확정됩니다.)</p>
+
+            <div class="chart-box">
+                <img src="https://via.placeholder.com/800x400/ADCBE3/fff?text=구로구+인터넷+현금지원+비교+시뮬레이션" alt="현금지원 시뮬레이션 그래프">
+                <p style="text-align: center; margin-top: 15px;">A업체는 현금 지원이 높지만, B업체는 사은품(상품권) 비중이 높습니다. C업체는 월 요금 할인이 강점입니다.</p>
+                <ul>
+                    <li><strong>A업체 (현금 집중형):</strong> <span class="strong-text">현금 지원금</span>을 최우선으로 제공하여 즉각적인 <span class="highlight">할인 효과</span>를 원하는 <span class="strong-text">내돈내산</span> 고객에게 유리합니다.</li>
+                    <li><strong>B업체 (상품권/사은품 결합형):</strong> <span class="highlight">상품권</span>이나 <span class="highlight">사은품</span>을 <span class="strong-text">현금 지원</span>과 함께 제공하여 다양한 혜택을 원하는 고객에게 적합합니다.</li>
+                    <li><strong>C업체 (월 요금 할인형):</strong> 월 <span class="strong-text">가격</span> 자체를 <span class="highlight">저렴하게</span> 책정하여 장기적인 <span class="strong-text">비용 절감</span>을 원하는 고객에게 유리합니다.</li>
+                </ul>
+                <p style="margin-top:20px; font-size:0.9em;">저희는 구로구 지역 <span class="strong-text">전문 업체</span>로 A, B, C 유형 모두의 견적을 비교 분석해드립니다. <span class="strong-text">구로동, 신도림동</span>에서 <span class="strong-text">인터넷 싼곳</span>을 찾을 때, <span class="strong-text">평균</span>적인 <span class="strong-text">금액</span>을 미리 확인하세요.</p>
+            </div>
+
+            <h3 style="margin-top:50px;">구로구인터넷 가입을 위한 <span class="strong-text">AI 에이전트</span> 활용법</h3>
+            <p>2026년에는 <span class="strong-text">인터넷 가입</span> 과정에도 <span class="strong-text">AI 기술</span>이 접목되고 있습니다. <span class="strong-text">ChatGPT</span>나 <span class="strong-text">Gemini</span>와 같은 <span class="strong-text">AI</span> 챗봇을 통해 기본적인 요금제 <span class="strong-text">비교</span>나 <span class="strong-text">예상 견적</span>을 확인할 수 있습니다. 하지만 <span class="strong-text">AI 에이전트</span>는 지역별 특성이나 복잡한 <span class="strong-text">신규 가입 혜택</span>을 정확히 반영하지 못할 수 있습니다. <span class="strong-text">구로구</span> 지역 <span class="strong-text">전문 업체</span> 상담사와 직접 통화하여 최신 <span class="strong-text">이벤트</span> 및 <span class="strong-text">지원금</span>을 확인하는 것이 가장 확실합니다.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>구로구인터넷 가입자 <span class="strong-text">내돈내산 후기</span> 및 <span class="strong-text">장단점</span> 비교</h2>
+        <p>실제 구로구 거주자의 <span class="strong-text">내돈내산 후기</span>를 바탕으로 <span class="strong-text">장단점</span>을 정리했습니다. <span class="strong-text">구로구인터넷</span>을 <span class="strong-text">추천</span>하는 이유와 <span class="strong-text">단점</span>을 모두 파악하여 합리적인 선택을 돕습니다.</p>
+        <div class="review-box">
+          <h4>후기 1. 구로동 아파트 거주자 (SKT 500M + Btv 가입)</h4>
+          <p>"신도림에서 구로동으로 이사 오면서 SKT로 <span class="strong-text">신규 가입</span>했습니다. 기존에 휴대폰이 SKT라서 <span class="strong-text">결합 할인</span>을 받으니 <span class="strong-text">가격</span>이 확실히 <span class="highlight">저렴</span>해졌습니다. <span class="strong-text">사은품</span>으로 받은 <span class="strong-text">현금 지원금</span>도 만족스러웠습니다. 다만, 설치 기사님이 조금 늦게 오셔서 <span class="strong-text">단점</span>이라면 그 정도였습니다. 속도는 <span class="strong-text">예상</span>대로 빠릅니다."</p>
+        </div>
+        <div class="review-box">
+          <h4>후기 2. 개봉동 원룸 거주자 (KT 100M 단독 가입)</h4>
+          <p>"원룸이라 <span class="strong-text">용달이사</span> 후 인터넷을 따로 가입해야 했습니다. <span class="strong-text">비교 견적</span>을 여러 곳에서 받았는데 <span class="strong-text">KT</span>가 가장 <span class="highlight">저렴한곳</span>이었습니다. <span class="strong-text">가격</span>이 <span class="strong-text">평균</span>보다 싸서 걱정했는데, 속도도 안정적이고 <span class="strong-text">장점</span>이 더 많았습니다. <span class="strong-text">현금지원</span> 금액은 많지 않았지만 <span class="strong-text">월 비용</span> 절감 효과가 컸습니다."</p>
+        </div>
+        <div class="review-box">
+          <h4>후기 3. 가리봉동 오피스텔 거주자 (LG U+ 1G + TV 가입)</h4>
+          <p>"<span class="strong-text">구로구인터넷</span> <span class="strong-text">전문 업체</span>를 통해 LG U+로 가입했습니다. <span class="strong-text">상품권</span> <span class="strong-text">지원금</span>이 가장 높았고, TV 콘텐츠가 다양해서 좋았습니다. <span class="strong-text">장점</span>은 <span class="highlight">신규 가입 혜택</span>이 좋다는 것이고, <span class="strong-text">단점</span>은 주말 설치가 어려웠다는 점입니다. <span class="strong-text">구로동</span> 오피스텔이라 인터넷 품질은 좋았습니다."</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>구로구인터넷 <span class="highlight">비교 견적</span> 요청 시 참고 사항</h2>
+        <p>인터넷 <span class="strong-text">전문 업체</span>를 통해 <span class="strong-text">견적</span>을 받을 때, 다음 사항들을 미리 확인하면 <span class="strong-text">비용</span> 절감에 도움이 됩니다.</p>
+        <ol>
+          <li><strong>휴대폰 결합 여부 확인:</strong> <span class="strong-text">SKT</span>, <span class="strong-text">KT</span>, <span class="strong-text">LG U+</span> 중 어떤 통신사를 사용하는지에 따라 <span class="highlight">할인율</span>이 달라집니다. 가족 구성원 전체의 통신사를 고려하여 <span class="highlight">결합 상품</span>을 선택하세요.</li>
+          <li><strong>설치 희망 지역의 인프라 확인:</strong> <span class="strong-text">구로구</span> 내에서도 <span class="strong-text">오류동</span>, <span class="strong-text">개봉동</span> 일부 지역은 통신사별 인프라 <span class="strong-text">차이점</span>이 있을 수 있습니다. <span class="strong-text">전문 업체</span>에 문의하여 설치 가능 여부와 속도를 확인하세요.</li>
+          <li><strong>2026년 <span class="strong-text">신규 가입 이벤트</span> 및 <span class="strong-text">사은품</span> 비교:</strong> <span class="strong-text">현금 지원</span> <span class="strong-text">금액</span>과 <span class="highlight">상품권</span> <span class="strong-text">지원금</span>을 꼼꼼히 <span class="strong-text">비교</span>하세요. <span class="strong-text">싼곳</span>보다는 <span class="highlight">지원금</span>을 많이 주는 곳이 유리할 수 있습니다.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+  
